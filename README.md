@@ -6,7 +6,6 @@ A data pipeline that ingests job posting data from CSV, transforms it into a nor
 
 ```
 ldj/
-├── docker-compose.yml          # PostgreSQL container
 ├── .env                        # Environment variables (DB credentials)
 ├── .env.example                # Template for .env
 ├── requirements.txt            # Python dependencies
@@ -36,8 +35,7 @@ ldj/
 ### Prerequisites
 
 - Python 3.13+
-- Docker and Docker Compose
-
+- 
 ### 1. Environment Setup
 
 ```bash
