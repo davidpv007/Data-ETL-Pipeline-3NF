@@ -61,5 +61,9 @@ credentials.py
 .env
 credentials.json
 
+# data files
 data/
 *.csv
+
+# data files
+/data/
