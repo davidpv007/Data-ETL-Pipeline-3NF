@@ -1,0 +1,62 @@
+// ER Diagram for 3NF Data Jobs Model
+// Use at https://dbdiagram.io
+
+Table companies {
+  company_id int [pk, increment]
+  name varchar [not null, unique]
+}
+
+Table locations {
+  location_id int [pk, increment]
+  job_location varchar
+  search_location varchar
+  country varchar
+}
+
+Table platforms {
+  platform_id int [pk, increment]
+  name varchar [not null, unique]
+}
+
+Table schedule_types {
+  schedule_type_id int [pk, increment]
+  name varchar [not null, unique]
+}
+
+Table skill_types {
+  skill_type_id int [pk, increment]
+  name varchar [not null, unique]
+}
+
+Table skills {
+  skill_id int [pk, increment]
+  name varchar [not null, unique]
+  skill_type_id int [ref: > skill_types.skill_type_id]
+}
+
+Table jobs {
+  job_id int [pk]
+  job_title varchar
+  job_title_short varchar
+  company_id int [ref: > companies.company_id]
+  location_id int [ref: > locations.location_id]
+  platform_id int [ref: > platforms.platform_id]
+  schedule_type_id int [ref: > schedule_types.schedule_type_id]
+  work_from_home boolean
+  posted_date timestamp
+  no_degree_mention boolean
+  health_insurance boolean
+  salary_rate varchar
+  salary_year_avg decimal
+  salary_hour_avg decimal
+}
+
+Table job_skills {
+  job_id int [ref: > jobs.job_id]
+  skill_id int [ref: > skills.skill_id]
+
+  indexes {
+    (job_id, skill_id) [pk]
+  }
+}
+
