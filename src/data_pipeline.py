@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Data Cleaning for 3NF in PostgreSQL using Polars
-
-# In[2]:
-
+# Data Cleaning for 3NF in PostgreSQL using Polars
 
 # Standard library
 
@@ -15,11 +9,13 @@ import ast
 from pathlib import Path
 
 # Third-party libraries
+
 import numpy as np
 import polars as pl
 from sqlalchemy import create_engine, text
 
 # Local config (pulls DB settings from environment when running in Docker/Airflow)
+
 from src.config import PostgresConfig
 
 pl.Config.set_tbl_rows(-1)   # show all rows
@@ -124,12 +120,6 @@ def main():
 
     if "job_id" not in df.columns:
         df = df.with_row_index(name="job_id", offset=1)
-
-
-
-
-    # In[6]:
-
 
     # Parse JSON Columns (job_skills and job_type_skills)
 
@@ -379,10 +369,8 @@ def main():
     with engine.connect() as conn:
         conn.execute(text("SELECT 1 AS ok"))
 
-
-    # Make a DB-friendly copy of df for export (do NOT mutate df)
     # Convert list-like job_skills to JSON string so psycopg2 can handle it
-    # Note: map_elements on List columns receives Polars Series, not Python lists
+    # map_elements on List columns receives Polars Series, not Python lists
 
     df_for_sql = df
 
@@ -416,7 +404,7 @@ def main():
         if_table_exists="replace",
     )
 
-    # verify load (no pandas)
+    # verify load
     with engine.connect() as conn:
         n = conn.execute(text("SELECT COUNT(*) AS n FROM data_jobs_raw")).scalar_one()
         print(f"Rows in data_jobs_raw: {n}")
