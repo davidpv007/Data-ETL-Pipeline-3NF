@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 import sys
 
-# Make sure /opt/airflow project root on PYTHONPATH
+# Root on PYTHONPATH
 
 PROJECT_ROOT = "/opt/airflow"
 if PROJECT_ROOT not in sys.path:
