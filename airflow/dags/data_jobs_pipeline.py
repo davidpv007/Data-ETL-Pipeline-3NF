@@ -15,7 +15,7 @@ from src.data_pipeline import main as etl_main
 
 
 def run_etl():
-    # keep your env vars for DB
+    # keep env DB
     os.environ.setdefault("POSTGRES_HOST", "postgres")
     os.environ.setdefault("POSTGRES_DB", "data_jobs_db")
     os.environ.setdefault("POSTGRES_USER", "ldj_user")
