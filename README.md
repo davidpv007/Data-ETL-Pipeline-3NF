@@ -54,6 +54,7 @@ A data pipeline that ingests job posting data from CSV, transforms it into a nor
 
 - Python 3.13+
 - Docker and Docker Compose
+- Apache Airflow
 
 ### 1. Environment Setup
 
